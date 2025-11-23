@@ -6,8 +6,9 @@ const defaultSettings = {
   fontSize: 18,
   lineHeight: 1.6,
   textAlign: 'left',
-  lightGradient: { start: '#FFFFFF', end: '#FFF9E6' },
-  darkGradient: { start: '#000000', end: '#1A1A1A' }
+  tint: 0, // 0 to 100 opacity for night light
+  lightGradient: { start: '#FFFFFF', end: '#FFFFFF' },
+  darkGradient: { start: '#000000', end: '#000000' }
 };
 
 const SettingsContext = createContext();

@@ -9,11 +9,11 @@ export const defaultTheme = {
     accent: '#3D79C2', // Exact blue from nav arrows
   },
   dark: {
-    gradientStart: '#121212',
-    gradientEnd: '#121212', // Flat dark
-    textPrimary: '#FFFFFF',
-    textSecondary: '#A0A0A0',
-    uiBackground: '#121212',
+    gradientStart: '#000000', // Kindle uses pure black
+    gradientEnd: '#000000',
+    textPrimary: '#FFFFFF', // High contrast white
+    textSecondary: '#999999',
+    uiBackground: '#000000',
     uiBorder: '#333333',
     accent: '#3D79C2',
   }

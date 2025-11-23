@@ -25,6 +25,7 @@ function AppContent() {
   const [bookData, setBookData] = useState(null);
   const [bookTitle, setBookTitle] = useState('');
   const [bookFormat, setBookFormat] = useState('epub');
+  const { settings } = useSettings();
 
   const handleFileSelect = (data, name, format) => {
     setBookData(data);
@@ -34,6 +35,22 @@ function AppContent() {
 
   return (
     <div className="app-container">
+      {/* Night Light Overlay */}
+      <div 
+        style={{
+          position: 'fixed',
+          top: 0,
+          left: 0,
+          right: 0,
+          bottom: 0,
+          backgroundColor: '#FFB000', // Warm amber color
+          opacity: settings.tint / 100,
+          pointerEvents: 'none',
+          zIndex: 9999,
+          mixBlendMode: 'multiply'
+        }} 
+      />
+
       <Header 
         onOpenSettings={() => setIsSettingsOpen(true)} 
         bookTitle={bookTitle}

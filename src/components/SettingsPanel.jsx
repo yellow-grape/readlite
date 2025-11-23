@@ -95,48 +95,20 @@ const SettingsPanel = ({ isOpen, onClose }) => {
         </div>
 
         <div className={styles.section}>
-          <h3>Background Colors</h3>
-          <p className={styles.hint}>Customize the gradient for the current theme</p>
+          <h3>Display</h3>
           
-          {themeMode === 'light' ? (
-            <div className={styles.colorPickers}>
-              <div className={styles.colorInput}>
-                <label>Top</label>
-                <input 
-                  type="color" 
-                  value={settings.lightGradient.start}
-                  onChange={(e) => handleGradientChange('light', 'start', e.target.value)}
-                />
-              </div>
-              <div className={styles.colorInput}>
-                <label>Bottom</label>
-                <input 
-                  type="color" 
-                  value={settings.lightGradient.end}
-                  onChange={(e) => handleGradientChange('light', 'end', e.target.value)}
-                />
-              </div>
-            </div>
-          ) : (
-            <div className={styles.colorPickers}>
-              <div className={styles.colorInput}>
-                <label>Top</label>
-                <input 
-                  type="color" 
-                  value={settings.darkGradient.start}
-                  onChange={(e) => handleGradientChange('dark', 'start', e.target.value)}
-                />
-              </div>
-              <div className={styles.colorInput}>
-                <label>Bottom</label>
-                <input 
-                  type="color" 
-                  value={settings.darkGradient.end}
-                  onChange={(e) => handleGradientChange('dark', 'end', e.target.value)}
-                />
-              </div>
-            </div>
-          )}
+          <div className={styles.controlGroup}>
+            <label>Night Light (Warmth)</label>
+            <input 
+              type="range" 
+              min="0" 
+              max="80" 
+              step="1" 
+              value={settings.tint}
+              onChange={(e) => updateSettings({ tint: Number(e.target.value) })}
+            />
+            <div className={styles.hint}>Reduces blue light for night reading</div>
+          </div>
         </div>
 
         <div className={styles.footer}>
