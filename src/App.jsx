@@ -1,35 +1,67 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import React, { useState } from 'react';
+import { SettingsProvider, useSettings } from './context/SettingsContext';
+import { ThemeProvider } from './context/ThemeContext';
+import Header from './components/Header';
+import SettingsPanel from './components/SettingsPanel';
+import ReaderView from './components/ReaderView';
+import FileUploader from './components/FileUploader';
+import './App.css';
 
-function App() {
-  const [count, setCount] = useState(0)
+// Wrapper to pass settings to ThemeProvider
+const ThemeWrapper = ({ children }) => {
+  const { settings, isLoaded } = useSettings();
+  
+  if (!isLoaded) return null; // Or a loading spinner
 
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+    <ThemeProvider customSettings={settings}>
+      {children}
+    </ThemeProvider>
+  );
+};
+
+function AppContent() {
+  const [isSettingsOpen, setIsSettingsOpen] = useState(false);
+  const [bookData, setBookData] = useState(null);
+  const [bookTitle, setBookTitle] = useState('');
+  const [bookFormat, setBookFormat] = useState('epub');
+
+  const handleFileSelect = (data, name, format) => {
+    setBookData(data);
+    setBookTitle(name.replace(/\.(epub|txt)$/, ''));
+    setBookFormat(format);
+  };
+
+  return (
+    <div className="app-container">
+      <Header 
+        onOpenSettings={() => setIsSettingsOpen(true)} 
+        bookTitle={bookTitle}
+      />
+      <SettingsPanel isOpen={isSettingsOpen} onClose={() => setIsSettingsOpen(false)} />
+      
+      <main className="reader-container" style={{ flex: 1, padding: '2rem 0' }}>
+        {!bookData ? (
+          <div style={{ textAlign: 'center', marginTop: '4rem' }}>
+            <h2 style={{ marginBottom: '2rem' }}>Welcome to ReadLite</h2>
+            <FileUploader onFileSelect={handleFileSelect} />
+          </div>
+        ) : (
+          <ReaderView bookData={bookData} format={bookFormat} />
+        )}
+      </main>
+    </div>
+  );
 }
 
-export default App
+function App() {
+  return (
+    <SettingsProvider>
+      <ThemeWrapper>
+        <AppContent />
+      </ThemeWrapper>
+    </SettingsProvider>
+  );
+}
+
+export default App;

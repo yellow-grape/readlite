@@ -1,0 +1,40 @@
+.uploader {
+  width: 100%;
+  max-width: 500px;
+  margin: 0 auto;
+  padding: 3rem;
+  border: 2px dashed var(--ui-border);
+  border-radius: 12px;
+  text-align: center;
+  transition: all 0.2s;
+  background: var(--ui-background);
+}
+
+.uploader:hover {
+  border-color: var(--accent-color);
+  background: rgba(0, 0, 0, 0.02);
+}
+
+.input {
+  display: none;
+}
+
+.label {
+  cursor: pointer;
+  display: block;
+}
+
+.icon {
+  color: var(--text-secondary);
+  margin-bottom: 1rem;
+}
+
+.uploader h3 {
+  margin: 0 0 0.5rem 0;
+  color: var(--text-primary);
+}
+
+.uploader p {
+  margin: 0;
+  color: var(--text-secondary);
+}

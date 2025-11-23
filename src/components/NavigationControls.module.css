@@ -1,0 +1,58 @@
+.controls {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  padding: 1rem;
+  background: var(--ui-background);
+  border-top: 1px solid var(--ui-border);
+  position: sticky;
+  bottom: 0;
+  z-index: 10;
+  backdrop-filter: blur(10px);
+  margin-top: 2rem;
+  transition: background 0.3s, border-color 0.3s;
+}
+
+.navBtn {
+  background: transparent;
+  border: 1px solid var(--ui-border);
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  color: var(--text-secondary);
+  transition: all 0.2s;
+}
+
+.navBtn:hover {
+  background: rgba(0, 0, 0, 0.05);
+  color: var(--text-primary);
+  border-color: var(--text-secondary);
+}
+
+.chapterSelect {
+  flex: 0 1 300px;
+}
+
+.chapterSelect select {
+  width: 100%;
+  padding: 8px 12px;
+  border-radius: 20px;
+  border: 1px solid var(--ui-border);
+  background: transparent;
+  color: var(--text-primary);
+  font-family: var(--font-ui);
+  font-size: 0.9rem;
+  cursor: pointer;
+  outline: none;
+  text-align: center;
+  text-align-last: center;
+}
+
+.chapterSelect select:hover {
+  border-color: var(--text-secondary);
+}
