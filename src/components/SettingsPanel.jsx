@@ -95,6 +95,24 @@ const SettingsPanel = ({ isOpen, onClose }) => {
         </div>
 
         <div className={styles.section}>
+          <h3>Layout</h3>
+          <div className={styles.buttonGroup}>
+            <button 
+              className={`${styles.optionBtn} ${settings.flow === 'scrolled-doc' ? styles.active : ''}`}
+              onClick={() => updateSettings({ flow: 'scrolled-doc' })}
+            >
+              Vertical
+            </button>
+            <button 
+              className={`${styles.optionBtn} ${settings.flow === 'paginated' ? styles.active : ''}`}
+              onClick={() => updateSettings({ flow: 'paginated' })}
+            >
+              Horizontal
+            </button>
+          </div>
+        </div>
+
+        <div className={styles.section}>
           <h3>Display</h3>
           
           <div className={styles.controlGroup}>

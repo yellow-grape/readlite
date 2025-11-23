@@ -6,6 +6,7 @@ const defaultSettings = {
   fontSize: 18,
   lineHeight: 1.6,
   textAlign: 'left',
+  flow: 'scrolled-doc', // 'scrolled-doc' (vertical) or 'paginated' (horizontal)
   tint: 0, // 0 to 100 opacity for night light
   lightGradient: { start: '#FFFFFF', end: '#FFFFFF' },
   darkGradient: { start: '#000000', end: '#000000' }

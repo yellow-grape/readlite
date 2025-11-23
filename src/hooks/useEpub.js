@@ -50,7 +50,7 @@ export const useEpub = (bookData, settings, theme) => {
     const newRendition = book.renderTo(viewerRef.current, {
       width: '100%',
       height: '100%',
-      flow: 'scrolled-doc', // Vertical scrolling within chapter
+      flow: settings.flow, // Dynamic flow based on settings
       manager: 'default', // Load one chapter at a time (no infinite scroll)
       allowScriptedContent: false
     });
