@@ -68,7 +68,8 @@ export const ThemeProvider = ({ children, customSettings }) => {
   const value = {
     themeMode,
     toggleTheme,
-    isLoaded
+    isLoaded,
+    currentTheme: defaultTheme[themeMode]
   };
 
   return (

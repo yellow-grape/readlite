@@ -2,10 +2,12 @@ import React from 'react';
 import { useEpub } from '../hooks/useEpub';
 import { useTextBook } from '../hooks/useTextBook';
 import { useSettings } from '../context/SettingsContext';
+import { useTheme } from '../context/ThemeContext';
 import NavigationControls from './NavigationControls';
 import styles from './ReaderView.module.css';
 
 const EpubViewer = ({ bookData, settings }) => {
+  const { currentTheme } = useTheme();
   const { 
     viewerRef, 
     isLoading, 
@@ -15,7 +17,7 @@ const EpubViewer = ({ bookData, settings }) => {
     toc, 
     currentLocation, 
     goToLocation 
-  } = useEpub(bookData, settings);
+  } = useEpub(bookData, settings, currentTheme);
 
   if (error) return <div className={styles.error}>{error}</div>;
 

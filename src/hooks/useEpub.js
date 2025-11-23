@@ -1,7 +1,7 @@
 import { useState, useEffect, useRef, useCallback } from 'react';
 import ePub from 'epubjs';
 
-export const useEpub = (bookData, settings) => {
+export const useEpub = (bookData, settings, theme) => {
   const [book, setBook] = useState(null);
   const [rendition, setRendition] = useState(null);
   const [toc, setToc] = useState([]);
@@ -61,7 +61,7 @@ export const useEpub = (bookData, settings) => {
 
     displayPromise.then(() => {
       // Set initial styles
-      applyStyles(newRendition, settings);
+      applyStyles(newRendition, settings, theme);
     });
 
     // Track location changes
@@ -79,11 +79,11 @@ export const useEpub = (bookData, settings) => {
   // Apply settings whenever they change
   useEffect(() => {
     if (!rendition) return;
-    applyStyles(rendition, settings);
-  }, [rendition, settings]);
+    applyStyles(rendition, settings, theme);
+  }, [rendition, settings, theme]);
 
-  const applyStyles = (rend, settings) => {
-    if (!rend) return;
+  const applyStyles = (rend, settings, theme) => {
+    if (!rend || !theme) return;
     
     rend.themes.default({
       'p': { 
@@ -91,14 +91,14 @@ export const useEpub = (bookData, settings) => {
         'font-size': `${settings.fontSize}px !important`,
         'line-height': `${settings.lineHeight} !important`,
         'text-align': `${settings.textAlign} !important`,
-        'color': 'var(--text-primary) !important' 
+        'color': `${theme.textPrimary} !important` 
       },
       'h1, h2, h3, h4, h5, h6': {
         'font-family': `${settings.fontFamily} !important`,
-        'color': 'var(--text-primary) !important'
+        'color': `${theme.textPrimary} !important`
       },
       'body': {
-        'color': 'var(--text-primary) !important',
+        'color': `${theme.textPrimary} !important`,
         'background': 'transparent !important' // Let our app background show through
       }
     });
