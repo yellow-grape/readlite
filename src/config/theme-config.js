@@ -1,20 +1,20 @@
 export const defaultTheme = {
   light: {
     gradientStart: '#FFFFFF',
-    gradientEnd: '#FFF9E6', // Warm yellow
-    textPrimary: '#1A1A1A',
+    gradientEnd: '#FFFFFF', // Flat white, no gradient
+    textPrimary: '#121212', // Exact dark grey from Bible.com
     textSecondary: '#666666',
-    uiBackground: 'rgba(255, 255, 255, 0.95)',
+    uiBackground: '#FFFFFF',
     uiBorder: '#E5E5E5',
-    accent: '#D32F2F', // Bible.com red-ish accent
+    accent: '#3D79C2', // Exact blue from nav arrows
   },
   dark: {
-    gradientStart: '#000000',
-    gradientEnd: '#1A1A1A', // Dark grey
-    textPrimary: '#E5E5E5',
+    gradientStart: '#121212',
+    gradientEnd: '#121212', // Flat dark
+    textPrimary: '#FFFFFF',
     textSecondary: '#A0A0A0',
-    uiBackground: 'rgba(26, 26, 26, 0.95)',
+    uiBackground: '#121212',
     uiBorder: '#333333',
-    accent: '#EF5350',
+    accent: '#3D79C2',
   }
 };

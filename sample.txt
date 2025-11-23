@@ -1,0 +1,1 @@
+Chapter 1\n\nThis is a sample book for ReadLite.\n\nIt demonstrates the text rendering capabilities.\n\nChapter 2\n\nThe quick brown fox jumps over the lazy dog.

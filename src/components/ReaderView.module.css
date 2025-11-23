@@ -1,8 +1,10 @@
 .container {
   width: 100%;
-  height: 100%;
+  max-width: 800px; /* Matches Bible.com visual width */
+  margin: 0 auto;
   min-height: 80vh;
   position: relative;
+  padding: 0 1rem;
 }
 
 .viewer {

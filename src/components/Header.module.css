@@ -2,14 +2,13 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 0.75rem 1.5rem;
+  padding: 0 1rem;
+  height: 64px;
   background: var(--ui-background);
   border-bottom: 1px solid var(--ui-border);
   position: sticky;
   top: 0;
   z-index: 100;
-  backdrop-filter: blur(10px);
-  transition: background 0.3s, border-color 0.3s;
 }
 
 .left, .right {
